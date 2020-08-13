@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Categories = ({ activeCategory, items, onClickCategory }) => {
+const Categories = React.memo(function Categories({
+  activeCategory,
+  items,
+  onClickCategory,
+}) {
   return (
     <div className="categories">
       <ul>
@@ -9,7 +13,7 @@ const Categories = ({ activeCategory, items, onClickCategory }) => {
           className={activeCategory === null ? "active" : ""}
           onClick={() => onClickCategory(null)}
         >
-          All
+          Все
         </li>
         {items &&
           items.map((name, index) => (
@@ -24,7 +28,7 @@ const Categories = ({ activeCategory, items, onClickCategory }) => {
       </ul>
     </div>
   );
-};
+});
 
 Categories.propTypes = {
   // activeCategory: PropTypes.oneOf([PropTypes.number, null]),
